@@ -32,6 +32,9 @@ public class Word {
             return -1;
         }
     }
+    public int getLength(){
+        return wordAsArray.length;
+    }
     public char getLetter(int index){
         return wordAsArray[index];
     }
