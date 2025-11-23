@@ -9,15 +9,15 @@ public class UI {
     private BufferedReader br;
     private StringBuilder out;
     public UI(int wordLength){
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br = new BufferedReader(new InputStreamReader(System.in));
         char[] t = new char[wordLength];
         Arrays.fill(t, '_');
         out = new StringBuilder(new String(t));
     }
-    public static void printHangStage(int index){
+    public void printHangStage(int index){
         System.out.println(stages[index]);
     }
-    public char getGuess(int index) {
+    public char getGuess() {
         System.out.println("Give me your guess. Enter only one character.");
         boolean done = false;
         String s = "";

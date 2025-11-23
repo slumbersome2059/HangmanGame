@@ -1,17 +1,26 @@
 public class Game {
-    private int attempt;
-    public static final int drawCharacters = 8;
+    private int failure, success;
+    private UI ui;
+    private Word word;
     public Game(){
-        attempt = 0;
-        while (attempt < drawCharacters){
-            //l = UI.getInput()
-            //ind = word.contains(l)
-            //if(ind != -1){
-            // UI.printOut(ind)
-            // }else{
-            // UI.printHang(attempt)
-            // }
-            attempt += 1;
+        failure = 0;
+        success = 0;
+        word = new Word();
+        ui = new UI(word.getLength());
+        while (failure < UI.stages.length && success < word.getLength()){
+            char l = ui.getGuess();
+            int ind = word.contains(l);
+            if(ind != -1){
+                ui.printOut(ind, word.getLetter(ind));
+                success += 1;
+            }
+            else{
+                ui.printHangStage(failure);
+                failure += 1;
+            }
+        }
+        if(failure >= UI.stages.length){
+            System.out.println("Correct word is " + word.getWord());
         }
     }
 }
