@@ -13,24 +13,15 @@ public class Word {
         randNum = r.nextInt(0, words.length);
         wordAsArray = words[randNum].toCharArray();
     }
-    private void removeContainedLetter(int index){
-        accessedIndices.add(index);
-    }
     public int contains(char c){
-        int i = 0;
-        boolean found = false;
-        while (i < wordAsArray.length && !found){
-            if(!accessedIndices.contains(i)){
-                found = wordAsArray[i] == c;
+        for(int i = 0; i < wordAsArray.length; i++) {
+            // If the character matches AND we haven't found this specific index yet
+            if(wordAsArray[i] == c && !accessedIndices.contains(i)){
+                accessedIndices.add(i); // Mark this specific spot as found
+                return i; // Return the index immediately
             }
-            i += 1;
         }
-        if(found){
-            removeContainedLetter(i-1);
-            return (i - 1);
-        }else{
-            return -1;
-        }
+        return -1; // No new instances of this character found
     }
     public int getLength(){
         return wordAsArray.length;

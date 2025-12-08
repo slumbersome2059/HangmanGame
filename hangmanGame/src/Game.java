@@ -7,6 +7,8 @@ public class Game {
         success = 0;
         word = new Word();
         ui = new UI(word.getWord().length());
+    }
+    public void play(){
         while (failure < UI.stages.length && success < word.getWord().length()){
             char l = ui.getGuess();
             int ind = word.contains(l);
